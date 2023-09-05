@@ -18,4 +18,12 @@ export class AiService {
     });
     return chatCompletion.choices[0].message.content;
   }
+
+  async chatChain(message: any) {
+    const chatCompletion = await this.openai.chat.completions.create({
+      messages: message,
+      model: this.configService.get('OPENAI_API_BASE_MODEL'),
+    });
+    return chatCompletion.choices[0].message.content;
+  }
 }

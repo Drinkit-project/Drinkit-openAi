@@ -15,4 +15,12 @@ export class MessagesController {
     const msg = await this.aiService.chat(message);
     return msg;
   }
+  @Post('/chain')
+  async createChainMessage(@Body() content: { message: string }) {
+    console.log(content);
+    const messages = this.messagesService.createChainMessage(content);
+    const msg = await this.aiService.chatChain(messages);
+    console.log(msg);
+    return msg;
+  }
 }
