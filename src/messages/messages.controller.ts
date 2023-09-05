@@ -17,10 +17,8 @@ export class MessagesController {
   }
   @Post('/chain')
   async createChainMessage(@Body() content: { message: string }) {
-    console.log(content);
     const messages = this.messagesService.createChainMessage(content);
     const msg = await this.aiService.chatChain(messages);
-    console.log(msg);
     return msg;
   }
 }
